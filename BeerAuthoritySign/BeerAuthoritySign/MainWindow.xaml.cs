@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,37 +24,37 @@ namespace BeerAuthoritySign
   /// </summary>
   public partial class MainWindow : Window
   {
-    BeerList beerList = new BeerList();
-
-    private ObservableCollection<Beer> beers = new ObservableCollection<Beer>();
+    private ObservableCollection<Beer> beerList = new ObservableCollection<Beer>();
 
     public MainWindow()
     {
+
       InitializeComponent();
 
-      beers.Add(new Beer()
-      {
-        Name = "Stout",
-        Brewery = "Stouts R Us",
-        SchoonerPrice = 6,
-        PintPrice = 10
-      });
+      BeerList bl = BeerList.LoadBeerList("mybeers.txt");
+      this.beerList = bl.Beers;
 
-
-      beers.Add(new Beer()
+      while (beerList.Count < 8)
       {
-        Name = "Cider",
-        Brewery = "Spire",
-        SchoonerPrice = 6,
-        PintPrice = 10
-      });
-
-      while (beers.Count < 8)
-      {
-        beers.Add(new Beer());
+        beerList.Add(new Beer());
       }
 
-      DataContext = beers;
+      DataContext = beerList;
+    }
+
+    private void Button_Click_1(object sender, RoutedEventArgs e)
+    {
+      SaveBeerList();
+    }
+
+    private void SaveBeerList()
+    {
+      BeerList.SaveBeerList(new BeerList() { Beers = this.beerList }, "mybeers.txt");
+    }
+
+    private void Window_Closing_1(object sender, System.ComponentModel.CancelEventArgs e)
+    {
+      SaveBeerList();
     }
   }
 }
