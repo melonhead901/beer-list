@@ -24,11 +24,20 @@ namespace BeerAuthoritySign
       set { brewery = value; OnNotifyPropertyChanged("Brewery"); }
     }
 
-    private double schoonerPrice;
-    public double SchoonerPrice
+    private double abv;
+
+    public double ABV
     {
-      get { return schoonerPrice; }
-      set { schoonerPrice = value; OnNotifyPropertyChanged("SchoonerPrice"); }
+      get { return abv; }
+      set { abv = value; OnNotifyPropertyChanged("ABV"); }
+    }
+
+
+    private double growlerPrice;
+    public double GrowlerPrice
+    {
+      get { return growlerPrice; }
+      set { growlerPrice = value; OnNotifyPropertyChanged("GrowlerPrice"); }
     }
 
     private double pintPrice;
@@ -38,6 +47,14 @@ namespace BeerAuthoritySign
       set { pintPrice = value; OnNotifyPropertyChanged("PintPrice"); }
     }
 
+    private string kind;
+
+    public string Kind
+    {
+      get { return kind; }
+      set { kind = value; OnNotifyPropertyChanged("Kind");  }
+    }
+    
     #region INotifyPropertyChanged Members
 
     private void OnNotifyPropertyChanged(string propertyName)

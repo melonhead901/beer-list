@@ -63,6 +63,8 @@
     </Compile>
     <Compile Include="Beer.cs" />
     <Compile Include="BeerList.cs" />
+    <Compile Include="ClickSelectTextBox.cs" />
+    <Compile Include="HtmlWriter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

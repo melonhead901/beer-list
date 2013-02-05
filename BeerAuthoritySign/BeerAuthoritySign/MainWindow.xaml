@@ -7,57 +7,76 @@
     <Grid>
         <StackPanel>
             <ListView ItemsSource="{Binding}">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="{x:Type ListViewItem}">
-                    <Setter Property="HorizontalContentAlignment"	Value="Stretch" />
-                    <Setter Property="VerticalContentAlignment"		Value="Center" />
-                    <Setter Property="Height" Value="{StaticResource columnHeight}" />
-                </Style>
-            </ListView.ItemContainerStyle>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="HorizontalContentAlignment"	Value="Stretch" />
+                        <Setter Property="VerticalContentAlignment"		Value="Center" />
+                        <Setter Property="Height" Value="{StaticResource columnHeight}" />
+                    </Style>
+                </ListView.ItemContainerStyle>
 
-            <ListView.View>
-                <GridView>
-                    <!-- Name Column -->
-                    <GridViewColumn Header="Beer Name" Width="{StaticResource wideColumnWidth}">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Text="{Binding Path=Name}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                <ListView.View>
+                    <GridView>
+                        <!-- Name Column -->
+                        <GridViewColumn Header="Beer Name" Width="{StaticResource wideColumnWidth}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <local:ClickSelectTextBox Text="{Binding Path=Name}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
 
-                    <!-- Brewery Column -->
-                    <GridViewColumn Header="Brewery" Width="{StaticResource wideColumnWidth}">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Text="{Binding Path=Brewery}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                        <!-- Brewery Column -->
+                        <GridViewColumn Header="Brewery" Width="{StaticResource wideColumnWidth}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <local:ClickSelectTextBox Text="{Binding Path=Brewery}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
 
-                    <!-- Schooner Price Column -->
-                    <GridViewColumn Header="Schooner Price" Width="{StaticResource narrowColumnWidth}">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Text="{Binding Path=SchoonerPrice}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                        <!-- Kind Column -->
+                        <GridViewColumn Header="Kind" Width="{StaticResource narrowColumnWidth}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <local:ClickSelectTextBox Text="{Binding Path=Kind}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
 
-                    <!-- Pint Price Column -->
-                    <GridViewColumn Header="Pint Price" Width="{StaticResource narrowColumnWidth}">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Text="{Binding Path=PintPrice}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
+                        <!-- ABV Column -->
+                        <GridViewColumn Header="ABV" Width="{StaticResource narrowColumnWidth}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <local:ClickSelectTextBox Text="{Binding Path=ABV}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Pint Price Column -->
+                        <GridViewColumn Header="Pint Price" Width="{StaticResource narrowColumnWidth}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <local:ClickSelectTextBox Text="{Binding Path=PintPrice}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <!-- Growler Price Column -->
+                        <GridViewColumn Header="Growler Price" Width="{StaticResource narrowColumnWidth}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <local:ClickSelectTextBox Text="{Binding Path=GrowlerPrice}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
             </ListView>
             <StackPanel Orientation="Horizontal">
-                <Button Height="30" Margin="10" Width="100" Click="Button_Click_1">Save To Disk</Button>
-                <Button Height="30" Margin="10" Width="100">Print</Button>
+                <Button Height="30" Margin="10" Width="100" Click="Button_Click_1">Save Beers</Button>
+                <Button Height="30" Margin="10" Width="100">Show Beer List</Button>
             </StackPanel>
         </StackPanel>
     </Grid>
