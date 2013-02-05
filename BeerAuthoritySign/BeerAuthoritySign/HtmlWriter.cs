@@ -40,16 +40,32 @@ namespace BeerAuthoritySign
     {
       OpenTag("body");
 
+      WriteBanner();
       WriteTable();
 
       CloseTag("body");
     }
 
+    private void WriteBanner()
+    {
+      OneLineTag("h1", "Beer Authority On Tap");
+    }
+
     #region Table Writing
 
-    private void WriteHeaderRow()
+    private void WriteTable()
     {
-      OpenTag("tr");
+      OpenTag("table");
+
+      WriteTableHeaderRow();
+      WriteBeerRows();
+
+      CloseTag("table");
+    }
+
+    private void WriteTableHeaderRow()
+    {
+      OpenTag("tr class=\"headerRow\"");
       WriteTableData("Name");
       WriteTableData("Brewery");
       WriteTableData("Kind");
@@ -57,16 +73,6 @@ namespace BeerAuthoritySign
       WriteTableData("Pint");
       WriteTableData("Growler");
       CloseTag("tr");
-    }
-
-    private void WriteTable()
-    {
-      OpenTag("table");
-
-      WriteHeaderRow();
-      WriteBeerRows();
-
-      CloseTag("table");
     }
 
     private void WriteBeerRows()
@@ -84,9 +90,9 @@ namespace BeerAuthoritySign
       WriteTableData(beer.Name);
       WriteTableData(beer.Brewery);
       WriteTableData(beer.Kind);
-      WriteTableData(beer.ABV.ToString());
-      WriteTableData(beer.PintPrice.ToString());
-      WriteTableData(beer.GrowlerPrice.ToString());
+      WriteTableData(String.Format("{0:P1}", beer.ABV/100));
+      WriteTableData(String.Format("{0:C2}", beer.PintPrice));
+      WriteTableData(String.Format("{0:C2}", beer.GrowlerPrice));
       CloseTag("tr");
     }
 
@@ -119,7 +125,7 @@ namespace BeerAuthoritySign
 
     private void OpenHtml()
     {
-      OpenTag("html", " xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\"");
+      OpenTag("html", "xmlns", "http://www.w3.org/1999/xhtml",  "xml:lang", "en",  "lang", "en");
     }
 
     private void CloseWriter()
@@ -177,9 +183,9 @@ namespace BeerAuthoritySign
       StringBuilder builder = new StringBuilder();
       builder.Append("<" + tag + " ");
 
-      for (int i = 0; i < attributes.Length; i++)
+      for (int i = 0; i < attributes.Length; i+=2)
       {
-        builder.Append(attributes[i] + " ");
+        builder.Append(attributes[i] + "=" + "\"" + attributes[i+1] + "\" ");
       }
 
       // Remove last space

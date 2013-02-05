@@ -19,7 +19,8 @@ table {
 	margin-right: auto;
 }
 
-.headRow {
+.headerRow {
+  font-weight: bold;
 }
 
 td {
