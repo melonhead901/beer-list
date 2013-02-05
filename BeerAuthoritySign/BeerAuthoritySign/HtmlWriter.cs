@@ -48,7 +48,7 @@ namespace BeerAuthoritySign
 
     private void WriteBanner()
     {
-      OneLineTag("h1", "Beer Authority On Tap");
+      OneLineTag("h1 class=\"center\"", "Beer On Tap");
     }
 
     #region Table Writing
@@ -66,9 +66,7 @@ namespace BeerAuthoritySign
     private void WriteTableHeaderRow()
     {
       OpenTag("tr class=\"headerRow\"");
-      WriteTableData("Name");
-      WriteTableData("Brewery");
-      WriteTableData("Kind");
+      WriteTableData("");
       WriteTableData("ABV");
       WriteTableData("Pint");
       WriteTableData("Growler");
@@ -78,18 +76,19 @@ namespace BeerAuthoritySign
     private void WriteBeerRows()
     {
       //throw new NotImplementedException();
+      bool even = false;
       foreach (var beer in this.list.Beers)
       {
-        WriteBeer(beer);
+        WriteBeer(beer, even ? "even" : "odd");
+        even = !even;
       }
     }
 
-    private void WriteBeer(Beer beer)
+    private void WriteBeer(Beer beer, string rowClass)
     {
-      OpenTag("tr");
-      WriteTableData(beer.Name);
-      WriteTableData(beer.Brewery);
-      WriteTableData(beer.Kind);
+      if (beer.Name == "") { return;  }
+      OpenTag("tr", "class", rowClass);
+      WriteTableData(beer.Name + " " + beer.Brewery + " " + beer.Kind);
       WriteTableData(String.Format("{0:P1}", beer.ABV/100));
       WriteTableData(String.Format("{0:C2}", beer.PintPrice));
       WriteTableData(String.Format("{0:C2}", beer.GrowlerPrice));

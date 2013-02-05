@@ -34,7 +34,7 @@ namespace BeerAuthoritySign
       BeerList bl = BeerList.LoadBeerList("mybeers.txt");
       this.beerList = bl.Beers;
 
-      while (beerList.Count < 8)
+      while (beerList.Count < 13)
       {
         beerList.Add(new Beer());
       }
