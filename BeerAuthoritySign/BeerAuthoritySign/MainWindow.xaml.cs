@@ -56,5 +56,11 @@ namespace BeerAuthoritySign
     {
       SaveBeerList();
     }
+
+    private void MakeBeerListClick(object sender, RoutedEventArgs e)
+    {
+      HtmlWriter writer = new HtmlWriter(new BeerList() { Beers = this.beerList }, "beerlist.html");
+      writer.Write();
+    }
   }
 }

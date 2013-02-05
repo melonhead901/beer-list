@@ -13,34 +13,36 @@ namespace BeerAuthoritySign
     private BeerList list;
     private StreamWriter writer;
     private string outputPath;
+    private int indentLevel;
 
     public HtmlWriter(BeerList list, string outputPath)
     {
       this.list = new BeerList();
       this.outputPath = outputPath;
+      this.indentLevel = 0;
     }
 
     public void Write()
     {
       OpenWriter();
-      WriteHeader();
-      WriterCloser();
+      OpenHtml();
+      CloseHtml();
       CloseWriter();
     }
 
-    private void WriterCloser()
+    private void CloseHtml()
     {
-      this.writer.Close();
+      CloseTag("html");
     }
 
-    private void WriteHeader()
+    private void OpenHtml()
     {
       OpenTag("html");
     }
 
     private void CloseWriter()
     {
-      throw new NotImplementedException();
+      this.writer.Close();
     }
 
     private void OpenWriter()
@@ -48,13 +50,32 @@ namespace BeerAuthoritySign
       this.writer = new StreamWriter(this.outputPath);
     }
 
-    private void OpenTag(string tag)
+    private void WriteIndents()
     {
-      this.writer.WriteLine("<" + tag + ">");
+      StringBuilder builder = new StringBuilder();
+      for (int i = 0; i < indentLevel; i++)
+      {
+        builder.Append("\t");
+      }
+      writer.Write(builder);
+    }
+
+    private void OpenTag(string tag, params string[] attributes)
+    {
+      WriteIndents();
+      StringBuilder builder = new StringBuilder();
+      builder.Append("<" + tag + " ");
+      // Remove last space
+      builder.Remove(builder.Length - 1, 1);
+      builder.Append(">");
+      this.writer.WriteLine(builder.ToString());
+      indentLevel++;
     }
 
     private void CloseTag(string tag)
     {
+      indentLevel--;
+      WriteIndents();
       this.writer.WriteLine("</" + tag + ">");
     }
   }

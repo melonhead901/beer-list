@@ -76,7 +76,7 @@
             </ListView>
             <StackPanel Orientation="Horizontal">
                 <Button Height="30" Margin="10" Width="100" Click="SaveButtonClick">Save Beers</Button>
-                <Button Height="30" Margin="10" Width="100" Content="Make Beer List"/>
+                <Button Height="30" Margin="10" Width="100" Content="Make Beer List" Click="MakeBeerListClick"/>
             </StackPanel>
         </StackPanel>
     </Grid>
