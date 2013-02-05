@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	    xmlns:local="clr-namespace:BeerAuthoritySign"
         Title="MainWindow"
-        SizeToContent="WidthAndHeight" Closing="Window_Closing_1">
+        SizeToContent="WidthAndHeight" Closing="WindowClosing">
     <Grid>
         <StackPanel>
             <ListView ItemsSource="{Binding}">
@@ -75,8 +75,8 @@
                 </ListView.View>
             </ListView>
             <StackPanel Orientation="Horizontal">
-                <Button Height="30" Margin="10" Width="100" Click="Button_Click_1">Save Beers</Button>
-                <Button Height="30" Margin="10" Width="100">Show Beer List</Button>
+                <Button Height="30" Margin="10" Width="100" Click="SaveButtonClick">Save Beers</Button>
+                <Button Height="30" Margin="10" Width="100" Content="Make Beer List"/>
             </StackPanel>
         </StackPanel>
     </Grid>

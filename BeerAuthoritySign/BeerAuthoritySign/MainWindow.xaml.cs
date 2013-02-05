@@ -42,7 +42,7 @@ namespace BeerAuthoritySign
       DataContext = beerList;
     }
 
-    private void Button_Click_1(object sender, RoutedEventArgs e)
+    private void SaveButtonClick(object sender, RoutedEventArgs e)
     {
       SaveBeerList();
     }
@@ -52,7 +52,7 @@ namespace BeerAuthoritySign
       BeerList.SaveBeerList(this.beerList, "mybeers.txt");
     }
 
-    private void Window_Closing_1(object sender, System.ComponentModel.CancelEventArgs e)
+    private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
     {
       SaveBeerList();
     }
