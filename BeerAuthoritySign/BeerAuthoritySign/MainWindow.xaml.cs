@@ -49,7 +49,7 @@ namespace BeerAuthoritySign
 
     private void SaveBeerList()
     {
-      BeerList.SaveBeerList(new BeerList() { Beers = this.beerList }, "mybeers.txt");
+      BeerList.SaveBeerList(this.beerList, "mybeers.txt");
     }
 
     private void Window_Closing_1(object sender, System.ComponentModel.CancelEventArgs e)

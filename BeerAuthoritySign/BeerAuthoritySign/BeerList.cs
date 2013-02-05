@@ -41,11 +41,11 @@ namespace BeerAuthoritySign
       }
     }
 
-    public static void SaveBeerList(BeerList beerList, string path)
+    public static void SaveBeerList(ObservableCollection<Beer> beerList, string path)
     {
       IFormatter formatter = new BinaryFormatter();
       Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
-      formatter.Serialize(stream, beerList);
+      formatter.Serialize(stream, new BeerList() { Beers = beerList });
       stream.Close();
     }
   }
