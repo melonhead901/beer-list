@@ -68,14 +68,13 @@ namespace BeerAuthoritySign
       OpenTag("tr class=\"headerRow\"");
       WriteTableData("");
       WriteTableData("ABV");
-      WriteTableData("Pint");
+      WriteTableData("Glass");
       WriteTableData("Growler");
       CloseTag("tr");
     }
 
     private void WriteBeerRows()
     {
-      //throw new NotImplementedException();
       bool even = false;
       foreach (var beer in this.list.Beers)
       {
