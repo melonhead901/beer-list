@@ -1,0 +1,56 @@
+/* 
+    Document   : events
+    Created on : Feb 4, 20123
+    Author     : Kellen Donohue
+    Description: Beer Authority Style Sheet
+*/
+
+body {
+  background-color: black;
+  width: 100%;
+  color: black;
+  font-family: Grantham, Calibri, Tahoma, sans-serif;
+  font-size: 24pt;
+  margin: 10px;
+  text-align: center;
+  color: white
+}
+
+#logo {
+  width: 300px;
+  margin: 30px;
+}
+
+.center {
+  color: white;
+  width: 100%;
+  text-align:center;
+  margin-bottom: 0px;
+}
+
+.even {
+  background-color: #b27a27;
+}
+
+.red {
+  text-color
+}
+
+.odd {
+  background-color: gray;
+}
+.headerRow {
+  font-weight: bold;
+}
+
+td {
+  padding: 5px 40px;
+}
+
+ul {
+}
+
+li {
+  list-style-type: none;
+  padding: 20px;
+}
