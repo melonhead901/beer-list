@@ -77,7 +77,7 @@
                 <GroupBox Header="Events" Width="470">
                     <StackPanel>
                         <TextBox x:Name="txtEventsText" Height="180" 
-                                 Text="{Binding Path=EventsText}" />
+                                 Text="{Binding Path=EventsText}" SpellCheck.IsEnabled="True" />
                         <Button x:Name="btnUpdateEventsList"  Height="30" Margin="0,5,0,5" 
                                 Padding="5" VerticalAlignment="Bottom" HorizontalAlignment="Right" 
                                 Click="btnUpdateEventsList_Click">Update Events List</Button>

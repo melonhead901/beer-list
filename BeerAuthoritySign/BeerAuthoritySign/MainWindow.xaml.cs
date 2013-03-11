@@ -67,8 +67,7 @@ namespace BeerAuthoritySign
 
     private void SaveEventsList()
     {
-      // TODO
-      EventsList.Save("myevents.txt");
+      this.eventsList.SaveToFile("myevents.txt");
     }
 
     private void MakeBeerListClick(object sender, RoutedEventArgs e)

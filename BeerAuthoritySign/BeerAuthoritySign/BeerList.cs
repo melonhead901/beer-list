@@ -30,10 +30,8 @@ namespace BeerAuthoritySign
         using (Stream stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
         {
           BeerList beerList = (BeerList)formatter.Deserialize(stream);
-          return beerList;
-          
-        }
-        
+          return beerList;          
+        }        
       }
       catch
       {

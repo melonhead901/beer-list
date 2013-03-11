@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -16,6 +17,12 @@ namespace BeerAuthoritySign
       set { this.eventsText = value; this.OnNotifyPropertyChanged("EventsText"); }
     }
 
+    public List<string> Events { get; private set; }
+
+    public EventsList()
+    {
+      this.Events = new List<string>();
+    }
 
     #region INotifyPropertyChanged Members
 
@@ -32,16 +39,41 @@ namespace BeerAuthoritySign
 
     #endregion
 
-    internal static EventsList LoadEventsList(string p)
+    /// <summary>
+    /// Attempt to load the event list from the given path. Returns a blank event list if none 
+    /// could be loaded.
+    /// </summary>
+    /// <param name="path">Path of the file to load the event list from</param>
+    /// <returns></returns>
+    internal static EventsList LoadEventsList(string path)
     {
-      // TODO
-      // throw new NotImplementedException();
-      return new EventsList();
+      try
+      {
+        var text = File.ReadAllText(path);
+        return new EventsList() { EventsText = text };
+      }
+      catch
+      {
+        return new EventsList();
+      }
     }
 
-    internal static void Save(string p)
+    /// <summary>
+    /// Write the contents of this events list to the file at the given path.
+    /// </summary>
+    /// <param name="path">Path of the file to write the events to</param>
+    /// <returns>True if the file could be written, otherwise fase</returns>
+    internal bool SaveToFile(string path)
     {
-      throw new NotImplementedException();
+      try
+      {
+        File.WriteAllText(path, this.EventsText);
+        return true;
+      }
+      catch
+      {
+        return false;
+      }
     }
   }
 }
