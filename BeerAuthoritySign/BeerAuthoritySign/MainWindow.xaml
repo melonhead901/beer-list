@@ -14,7 +14,6 @@
                         <Setter Property="Height" Value="{StaticResource columnHeight}" />
                     </Style>
                 </ListView.ItemContainerStyle>
-
                 <ListView.View>
                     <GridView>
                         <!-- Name Column -->
@@ -74,10 +73,17 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <StackPanel Orientation="Horizontal">
-                <Button Height="30" Margin="10" Width="100" Click="SaveButtonClick">Save Beers</Button>
-                <Button Height="30" Margin="10" Width="100" Content="Make Beer List" Click="MakeBeerListClick"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <GroupBox Header="Events" Width="470">
+                    <StackPanel>
+                        <TextBox Height="180"></TextBox>
+                        <Button  Height="30" Margin="10, 005, 0, 0" Width="100" VerticalAlignment="Bottom" HorizontalAlignment="Right"></Button>
+                    </StackPanel>
+                </GroupBox>
+                <Button Height="30" Margin="10" Width="100" Click="SaveButtonClick" VerticalAlignment="Top">Save Beers</Button>
+                <Button Height="30" Margin="10" Width="100" Content="Make Beer List" VerticalAlignment="Top" Click="MakeBeerListClick" IsDefault="True"/>
             </StackPanel>
         </StackPanel>
+        <WrapPanel HorizontalAlignment="Left" Height="100" Margin="975,-17,-365,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Window>
