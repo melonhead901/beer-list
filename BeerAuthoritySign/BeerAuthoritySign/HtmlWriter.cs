@@ -9,7 +9,6 @@ namespace BeerAuthoritySign
 {
   class HtmlWriter
   {
-
     private BeerList list;
     private StreamWriter writer;
     private string outputPath;
@@ -201,5 +200,11 @@ namespace BeerAuthoritySign
     }
 
     #endregion
+
+    internal static void WriteEventList(EventsList eventsList, string p)
+    {
+      // TODO
+      return;
+    }
   }
 }

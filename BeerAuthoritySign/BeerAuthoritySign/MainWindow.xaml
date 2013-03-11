@@ -76,8 +76,11 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <GroupBox Header="Events" Width="470">
                     <StackPanel>
-                        <TextBox x:Name="EventsText" Height="180"></TextBox>
-                        <Button  Height="30" Margin="0,5,0,5" Padding="5" VerticalAlignment="Bottom" HorizontalAlignment="Right">Update Events List</Button>
+                        <TextBox x:Name="txtEventsText" Height="180" 
+                                 Text="{Binding Path=EventsText}" />
+                        <Button x:Name="btnUpdateEventsList"  Height="30" Margin="0,5,0,5" 
+                                Padding="5" VerticalAlignment="Bottom" HorizontalAlignment="Right" 
+                                Click="btnUpdateEventsList_Click">Update Events List</Button>
                     </StackPanel>
                 </GroupBox>
                 <Button Height="30" Margin="10" Width="100" Click="SaveButtonClick" VerticalAlignment="Bottom">Save Beers</Button>

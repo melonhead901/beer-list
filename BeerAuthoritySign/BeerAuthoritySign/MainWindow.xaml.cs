@@ -26,12 +26,16 @@ namespace BeerAuthoritySign
   {
     private ObservableCollection<Beer> beerList = new ObservableCollection<Beer>();
 
+    private EventsList eventsList;
+
+    private const string BeerListPath = "mybeers.txt";
+    private const string EventsListPath = "myevents.txt";
+
     public MainWindow()
     {
-
       InitializeComponent();
 
-      BeerList bl = BeerList.LoadBeerList("mybeers.txt");
+      BeerList bl = BeerList.LoadBeerList(BeerListPath);
       this.beerList = bl.Beers;
 
       while (beerList.Count < 13)
@@ -40,6 +44,9 @@ namespace BeerAuthoritySign
       }
 
       DataContext = beerList;
+
+      eventsList = EventsList.LoadEventsList("myevents.txt");
+      txtEventsText.DataContext = eventsList;
     }
 
     private void SaveButtonClick(object sender, RoutedEventArgs e)
@@ -49,18 +56,29 @@ namespace BeerAuthoritySign
 
     private void SaveBeerList()
     {
-      BeerList.SaveBeerList(this.beerList, "mybeers.txt");
+      BeerList.SaveBeerList(this.beerList, BeerListPath);
     }
 
     private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
     {
       SaveBeerList();
+      SaveEventsList();
+    }
+
+    private void SaveEventsList()
+    {
+      // TODO
+      EventsList.Save("myevents.txt");
     }
 
     private void MakeBeerListClick(object sender, RoutedEventArgs e)
     {
-      HtmlWriter writer = new HtmlWriter(new BeerList() { Beers = this.beerList }, "beerlist.html");
-      writer.Write();
+        new HtmlWriter(new BeerList() { Beers = this.beerList }, "beerlist.html").Write();
+    }
+
+    private void btnUpdateEventsList_Click(object sender, RoutedEventArgs e)
+    {
+      HtmlWriter.WriteEventList(this.eventsList, "eventlist.html");
     }
   }
 }

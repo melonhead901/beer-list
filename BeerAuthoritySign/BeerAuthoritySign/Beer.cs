@@ -69,6 +69,5 @@ namespace BeerAuthoritySign
     public event PropertyChangedEventHandler PropertyChanged;
 
     #endregion
-
   }
 }
