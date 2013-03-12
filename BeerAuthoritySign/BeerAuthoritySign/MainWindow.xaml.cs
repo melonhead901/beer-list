@@ -72,12 +72,12 @@ namespace BeerAuthoritySign
 
     private void MakeBeerListClick(object sender, RoutedEventArgs e)
     {
-        new HtmlWriter(new BeerList() { Beers = this.beerList }, "beerlist.html").Write();
+        new BeerListHtmlWriter(new BeerList() { Beers = this.beerList }, "beerlist.html").Write();
     }
 
     private void btnUpdateEventsList_Click(object sender, RoutedEventArgs e)
     {
-      HtmlWriter.WriteEventList(this.eventsList, "eventlist.html");
+      BeerListHtmlWriter.WriteEventList(this.eventsList, "eventlist.html");
     }
   }
 }

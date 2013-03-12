@@ -7,16 +7,14 @@ using System.Threading.Tasks;
 
 namespace BeerAuthoritySign
 {
-  class HtmlWriter
+  abstract class HtmlWriter
   {
-    private BeerList list;
     private StreamWriter writer;
     private string outputPath;
     private int indentLevel;
 
-    public HtmlWriter(BeerList list, string outputPath)
+    public HtmlWriter(string outputPath)
     {
-      this.list = list;
       this.outputPath = outputPath;
       this.indentLevel = 0;
     }
@@ -35,65 +33,11 @@ namespace BeerAuthoritySign
 
     #region Body Writing
 
-    private void WriteBody()
-    {
-      OpenTag("body");
-
-      WriteBanner();
-      WriteTable();
-
-      CloseTag("body");
-    }
-
-    private void WriteBanner()
-    {
-      OneLineTag("h1 class=\"center\"", "Beer On Tap");
-    }
+    abstract protected void WriteBody();
 
     #region Table Writing
-
-    private void WriteTable()
-    {
-      OpenTag("table");
-
-      WriteTableHeaderRow();
-      WriteBeerRows();
-
-      CloseTag("table");
-    }
-
-    private void WriteTableHeaderRow()
-    {
-      OpenTag("tr class=\"headerRow\"");
-      WriteTableData("");
-      WriteTableData("ABV");
-      WriteTableData("Glass");
-      WriteTableData("Growler");
-      CloseTag("tr");
-    }
-
-    private void WriteBeerRows()
-    {
-      bool even = false;
-      foreach (var beer in this.list.Beers)
-      {
-        WriteBeer(beer, even ? "even" : "odd");
-        even = !even;
-      }
-    }
-
-    private void WriteBeer(Beer beer, string rowClass)
-    {
-      if (beer.Name == "") { return;  }
-      OpenTag("tr", "class", rowClass);
-      WriteTableData(beer.Name + " " + beer.Brewery + " " + beer.Kind);
-      WriteTableData(String.Format("{0:P1}", beer.ABV/100));
-      WriteTableData(String.Format("{0:C2}", beer.PintPrice));
-      WriteTableData(String.Format("{0:C2}", beer.GrowlerPrice));
-      CloseTag("tr");
-    }
-
-    private void WriteTableData(string p)
+    
+    protected void WriteTableData(string p)
     {
       WriteIndents();
       writer.WriteLine("<td>" + p + "</td>");
@@ -148,7 +92,7 @@ namespace BeerAuthoritySign
 
     #region Tag Management
 
-    private void SelfClosingTag(string tag, params string[] attributes)
+    protected void SelfClosingTag(string tag, params string[] attributes)
     {
       WriteIndents();
       StringBuilder builder = new StringBuilder();
@@ -165,7 +109,7 @@ namespace BeerAuthoritySign
       this.writer.WriteLine(builder.ToString());
     }
 
-    private void OneLineTag(string tag, string value)
+    protected void OneLineTag(string tag, string value)
     {
       WriteIndents();
       writer.Write("<" + tag + ">");
@@ -174,7 +118,7 @@ namespace BeerAuthoritySign
       writer.WriteLine();
     }
 
-    private void OpenTag(string tag, params string[] attributes)
+    protected void OpenTag(string tag, params string[] attributes)
     {
       WriteIndents();
       StringBuilder builder = new StringBuilder();
@@ -192,7 +136,7 @@ namespace BeerAuthoritySign
       indentLevel++;
     }
 
-    private void CloseTag(string tag)
+    protected void CloseTag(string tag)
     {
       indentLevel--;
       WriteIndents();
@@ -203,8 +147,7 @@ namespace BeerAuthoritySign
 
     internal static void WriteEventList(EventsList eventsList, string p)
     {
-      // TODO
-      return;
+
     }
   }
 }
