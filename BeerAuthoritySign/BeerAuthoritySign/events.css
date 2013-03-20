@@ -5,52 +5,29 @@
     Description: Beer Authority Style Sheet
 */
 
-body {
-  background-color: black;
+body
+{
+  background: url(BAbillboard.gif) no-repeat;
   width: 100%;
   color: black;
-  font-family: Grantham, Calibri, Tahoma, sans-serif;
+  font-family: Calibri, Tahoma, sans-serif;
   font-size: 24pt;
   margin: 10px;
-  text-align: center;
-  color: white
-}
-
-#logo {
-  width: 300px;
-  margin: 30px;
-}
-
-.center {
   color: white;
-  width: 100%;
-  text-align:center;
-  margin-bottom: 0px;
 }
 
-.even {
-  background-color: #b27a27;
+li
+{
+  color: black;
+  list-style-image: none;
+  font-size: 48pt;
+  position: relative;
+  white-space: pre;
+  top: 300px;
+  left: 300px;
 }
 
-.red {
-  text-color
-}
-
-.odd {
-  background-color: gray;
-}
-.headerRow {
-  font-weight: bold;
-}
-
-td {
-  padding: 5px 40px;
-}
-
-ul {
-}
-
-li {
-  list-style-type: none;
-  padding: 20px;
+p
+{
+  margin: .25em;
 }
