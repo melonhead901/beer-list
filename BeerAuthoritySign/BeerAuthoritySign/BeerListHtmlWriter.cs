@@ -83,7 +83,7 @@ namespace BeerAuthoritySign
 
     #region Header Writing
 
-    private void WriteHead()
+    protected override void WriteHead()
     {
       OpenTag("head");
       OneLineTag("title", "Beer Authority");

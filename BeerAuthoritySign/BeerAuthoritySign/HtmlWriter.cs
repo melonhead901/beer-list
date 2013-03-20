@@ -46,18 +46,8 @@ namespace BeerAuthoritySign
     #endregion
 
     #endregion
-
-    #region Header Writing
-
-    private void WriteHead()
-    {
-      OpenTag("head");
-      OneLineTag("title", "Beer Authority");
-      SelfClosingTag("link", "rel=\"stylesheet\"", "type=\"text/css\"", "href=\"beerlist.css\"");
-      CloseTag("head");
-    }
-
-    #endregion
+    
+    abstract protected void WriteHead();
 
     private void CloseHtml()
     {
@@ -145,9 +135,11 @@ namespace BeerAuthoritySign
 
     #endregion
 
-    internal static void WriteEventList(EventsList eventsList, string p)
+    internal void WriteList(List<string> list)
     {
-
+      this.OpenTag("ul");
+      list.FindAll(item => item.Length > 0).ForEach(item => this.OneLineTag("li", "<p>" + item + "</p>"));
+      this.CloseTag("ul");
     }
   }
 }
