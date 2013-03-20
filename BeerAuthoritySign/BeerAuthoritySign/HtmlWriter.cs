@@ -141,5 +141,10 @@ namespace BeerAuthoritySign
       list.FindAll(item => item.Length > 0).ForEach(item => this.OneLineTag("li", "<p>" + item + "</p>"));
       this.CloseTag("ul");
     }
+
+    internal void WriteRedirect(int time, string to)
+    {
+      SelfClosingTag("meta", "http-equiv=\"REFRESH\" content=\"" + time +";url=" + to + "\"");
+    }
   }
 }

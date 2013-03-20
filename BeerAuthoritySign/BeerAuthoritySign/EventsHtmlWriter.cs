@@ -10,9 +10,12 @@ namespace BeerAuthoritySign
   {
     public string EventsText { get; private set; }
 
-    public EventsHtmlWriter(string path, string eventstext) : base(path)
+    private int showFor;
+
+    public EventsHtmlWriter(string path, string eventstext, int showFor) : base(path)
     {
       this.EventsText = eventstext;
+      this.showFor = showFor;
     }
 
     protected override void WriteBody()
@@ -24,7 +27,8 @@ namespace BeerAuthoritySign
     {
       OpenTag("head");
       OneLineTag("title", "Beer Authority");
-      SelfClosingTag("link", "rel=\"stylesheet\"", "type=\"text/css\"", "href=\"events.css\"");
+      SelfClosingTag("link", "rel=\"stylesheet\"", "type=\"text/css\"", "href=\"events.css\""); 
+      WriteRedirect(showFor, MainWindow.BeerListLoc);
       CloseTag("head");
     }
   }
