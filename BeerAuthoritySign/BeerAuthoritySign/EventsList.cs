@@ -17,13 +17,6 @@ namespace BeerAuthoritySign
       set { this.eventsText = value; this.OnNotifyPropertyChanged("EventsText"); }
     }
 
-    public List<string> Events { get; private set; }
-
-    public EventsList()
-    {
-      this.Events = new List<string>();
-    }
-
     #region INotifyPropertyChanged Members
 
     private void OnNotifyPropertyChanged(string propertyName)
