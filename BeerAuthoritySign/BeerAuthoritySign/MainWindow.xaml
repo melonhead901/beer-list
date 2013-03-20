@@ -83,8 +83,22 @@
                                 Click="btnUpdateEventsList_Click">Update Events List</Button>
                     </StackPanel>
                 </GroupBox>
-                <Button Height="30" Margin="10" Width="100" Click="SaveButtonClick" VerticalAlignment="Bottom">Save Beers</Button>
-                <Button Height="30" Margin="10" Width="100" Content="Make Beer List" VerticalAlignment="Bottom" Click="MakeBeerListClick" IsDefault="True"/>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Height="191">
+                        <DockPanel  Margin="5">
+                            <Label Content="Show Beer List For" Width="116"></Label>
+                            <TextBox x:Name="txtBeerTime" HorizontalContentAlignment="Center">5</TextBox>
+                        </DockPanel>
+                        <DockPanel  Margin="5">
+                            <Label Content="Show Events For" Width="116"></Label>
+                            <TextBox x:Name="txtEventsTime" CharacterCasing="Upper" HorizontalContentAlignment="Center">5</TextBox>
+                        </DockPanel>
+                    </StackPanel>
+                    <StackPanel Width="238" Orientation="Horizontal" VerticalAlignment="Bottom">
+                        <Button Height="30" Margin="10" Width="100" Click="SaveButtonClick" VerticalAlignment="Bottom">Save Beers</Button>
+                        <Button Height="30" Margin="10" Width="100" Content="Make Beer List" VerticalAlignment="Bottom" Click="MakeBeerListClick" IsDefault="True"/>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
         <WrapPanel HorizontalAlignment="Left" Height="100" Margin="975,-17,-365,0" VerticalAlignment="Top" Width="100"/>
