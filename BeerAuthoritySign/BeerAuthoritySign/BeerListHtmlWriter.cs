@@ -10,10 +10,12 @@ namespace BeerAuthoritySign
   class BeerListHtmlWriter : HtmlWriter
   {
     private BeerList list;
+    int showFor;
         
-    public BeerListHtmlWriter(BeerList list, string outputPath) : base(outputPath)
+    public BeerListHtmlWriter(BeerList list, string outputPath, int showFor) : base(outputPath)
     {
       this.list = list;
+      this.showFor = showFor;
     }
     
 
@@ -83,11 +85,12 @@ namespace BeerAuthoritySign
 
     #region Header Writing
 
-    private void WriteHead()
+    protected override void WriteHead()
     {
       OpenTag("head");
       OneLineTag("title", "Beer Authority");
       SelfClosingTag("link", "rel=\"stylesheet\"", "type=\"text/css\"", "href=\"beerlist.css\"");
+      WriteRedirect(showFor, MainWindow.EventsListLoc);
       CloseTag("head");
     }
 

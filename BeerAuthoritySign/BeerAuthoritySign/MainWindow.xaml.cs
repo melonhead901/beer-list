@@ -28,8 +28,15 @@ namespace BeerAuthoritySign
 
     private EventsList eventsList;
 
+    public int showBeer;
+
+    public  int showEvents;
+
     private const string BeerListPath = "mybeers.txt";
     private const string EventsListPath = "myevents.txt";
+
+    public static readonly string BeerListLoc = "beerlist.html";
+    public static readonly string EventsListLoc = "eventlist.html";
 
     public MainWindow()
     {
@@ -45,8 +52,11 @@ namespace BeerAuthoritySign
 
       DataContext = beerList;
 
-      eventsList = EventsList.LoadEventsList("myevents.txt");
+      eventsList = EventsList.LoadEventsList(EventsListPath);
       txtEventsText.DataContext = eventsList;
+
+      this.showBeer = 5;
+      this.showEvents = 5;
     }
 
     private void SaveButtonClick(object sender, RoutedEventArgs e)
@@ -67,17 +77,29 @@ namespace BeerAuthoritySign
 
     private void SaveEventsList()
     {
-      this.eventsList.SaveToFile("myevents.txt");
+      this.eventsList.SaveToFile(EventsListPath);
     }
 
     private void MakeBeerListClick(object sender, RoutedEventArgs e)
     {
-        new BeerListHtmlWriter(new BeerList() { Beers = this.beerList }, "beerlist.html").Write();
+      int showFor = 30;
+      Int32.TryParse(this.txtBeerTime.Text, out showFor);
+      if (showFor < 0)
+      {
+        showFor = 30;
+      }
+      new BeerListHtmlWriter(new BeerList() { Beers = this.beerList }, "beerlist.html", showFor).Write();
     }
 
     private void btnUpdateEventsList_Click(object sender, RoutedEventArgs e)
     {
-      BeerListHtmlWriter.WriteEventList(this.eventsList, "eventlist.html");
+      int showFor = 30;
+      Int32.TryParse(this.txtEventsTime.Text, out showFor);
+      if (showFor < 0)
+      {
+        showFor = 30;
+      }
+      new EventsHtmlWriter("eventlist.html", this.eventsList.EventsText, showFor) .Write();
     }
   }
 }
