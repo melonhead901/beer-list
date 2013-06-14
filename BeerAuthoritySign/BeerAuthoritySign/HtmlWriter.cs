@@ -36,7 +36,7 @@ namespace BeerAuthoritySign
     abstract protected void WriteBody();
 
     #region Table Writing
-    
+
     protected void WriteTableData(string p)
     {
       WriteIndents();
@@ -66,7 +66,7 @@ namespace BeerAuthoritySign
 
     private void OpenHtml()
     {
-      OpenTag("html", "xmlns", "http://www.w3.org/1999/xhtml",  "xml:lang", "en",  "lang", "en");
+      OpenTag("html", "xmlns", "http://www.w3.org/1999/xhtml", "xml:lang", "en", "lang", "en");
     }
 
     private void CloseWriter()
@@ -124,9 +124,9 @@ namespace BeerAuthoritySign
       StringBuilder builder = new StringBuilder();
       builder.Append("<" + tag + " ");
 
-      for (int i = 0; i < attributes.Length; i+=2)
+      for (int i = 0; i < attributes.Length; i += 2)
       {
-        builder.Append(attributes[i] + "=" + "\"" + attributes[i+1] + "\" ");
+        builder.Append(attributes[i] + "=" + "\"" + attributes[i + 1] + "\" ");
       }
 
       // Remove last space
